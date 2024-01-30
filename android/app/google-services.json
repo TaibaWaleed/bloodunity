@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551891452205",
+    "project_id": "bloodunity-9c51a",
+    "storage_bucket": "bloodunity-9c51a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551891452205:android:c29a3b16bda54b9c4393a4",
+        "android_client_info": {
+          "package_name": "com.example.bloodunity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2BqZAKtjMQRUjhKsy899cZjg7_-8N8PY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
