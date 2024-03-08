@@ -31,15 +31,17 @@ class AppUtils {
       title: Text(title),
     ));
   }
+
+  ///latitude longitude
+  static const double latitude = 30.123123;
+  static const double longitude = 30.123123;
+
+  static userProfileCard(IconData icon, String text) {}
 }
 
-class _validatePassword {}
+_BloodProfileScreenState() {}
 
-class Firebase {
-  static initializeApp() {}
-}
-
-class _isObscureText {}
+class _displayNameController {}
 
 ///not added in class to access quickly
 SizedBox sizedbox() => const SizedBox(height: 10);

@@ -4,7 +4,7 @@ class ProfileUserModel {
   final String displayName;
   final String bloodGroup;
   final int phoneNumber;
-  final String age;
+  final int age;
   final String?
       photoURL; // It's optional in case the UserModel doesn't have a photo.
 

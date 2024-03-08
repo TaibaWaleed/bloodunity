@@ -15,10 +15,11 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      height: 70,
+      height: 50,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      color: Colors.blue,
+      color: Colors.red,
       onPressed: onPressed,
+      textColor: Colors.white,
       child: Center(child: Text(title.toString())),
     );
   }

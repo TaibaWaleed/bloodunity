@@ -27,7 +27,6 @@ class _ShareAppState extends State<ShareApp> {
   @override
   Widget build(BuildContext context) {
     // Get screen size
-    final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -35,6 +34,7 @@ class _ShareAppState extends State<ShareApp> {
           'Share App',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
@@ -44,7 +44,8 @@ class _ShareAppState extends State<ShareApp> {
             CircleAvatar(
               radius: 100,
               backgroundImage: NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2wNu-ab4fTO54dhxk-dqef15iV3NEfHP6Ag&usqp=CAU'),
+                'https://img.freepik.com/premium-vector/3d-blood-type-b-o-ab-red-symbol-icon-vector-isolated-white-background-3d-blood-donation-medical-healthcare-concept-cartoon-minimal-style-3d-icon-vector-render-illustration_726846-5858.jpg',
+              ),
             ),
             // Text to encourage sharing
             SizedBox(height: 50),
@@ -69,7 +70,7 @@ class _ShareAppState extends State<ShareApp> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.red,
+                backgroundColor: Colors.red,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),

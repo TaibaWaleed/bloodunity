@@ -41,14 +41,12 @@ dependencies:
   flutter_lints: ^2.0.0
   fluttertoast: ^8.0.7
   firebase_auth: ^4.15.2
-  firebase_core: ^2.24.2
+  firebase_core: ^2.25.3
   carousel_slider: ^4.2.1
-  animated_text_kit: ^4.2.2
   cloud_firestore: ^4.7.0
   cached_network_image: ^3.3.0
   image_picker: ^1.0.5
   firebase_storage: ^11.5.6
-  google_sign_in: ^6.2.1
   social_auth_buttons: ^2.0.2
   flutter_svg: ^2.0.9
   google_fonts: ^6.0.0 
@@ -57,6 +55,9 @@ dependencies:
   font_awesome_flutter: ^10.2.1
   google_maps_flutter: ^2.5.3 # Check the latest version on pub.dev
   flutter_phone_direct_caller: ^2.1.1
+
+  
+
   
 dev_dependencies:
   flutter_test:
@@ -86,9 +87,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-assets:
-    - assets/svg_icons/
+#   # To add assets to your application, add an assets section, like this:
+# assets:
+#     - assets/svg_icons/
       
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

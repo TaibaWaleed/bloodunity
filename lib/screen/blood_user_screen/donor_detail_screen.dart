@@ -1,47 +1,106 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class DonorDetailScreen extends StatelessWidget {
-  const DonorDetailScreen({Key? key}) : super(key: key);
+  final String username;
+  final int userphoneNum;
+  final String userramdonId;
+  final String userbloodGroup;
+  final String userhospitalAddress;
+  final String userhomeAddress;
+  final String usertimeStamp;
+  final double latitude;
+  final double longitude;
+  final String phoneNumber;
+  final String userage; // Add user age
+  final String useremail; // Add user email
+
+  const DonorDetailScreen({
+    required this.username,
+    required this.userramdonId,
+    required this.userphoneNum,
+    required this.userbloodGroup,
+    required this.userhospitalAddress,
+    required this.userhomeAddress,
+    required this.usertimeStamp,
+    required this.latitude,
+    required this.longitude,
+    required this.phoneNumber,
+    required this.userage,
+    required this.useremail,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DonorDetailScreen'),
+        title: Text(
+          'Donor Detail ',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
       body: ListView(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(10.0),
         children: [
-          Center(child: Text('Profile Pic')),
-          SizedBox(height: 10),
-          Center(child: Text('Name: person')),
-          SizedBox(height: 10),
-          Center(child: Text('Age: 20')),
-          SizedBox(height: 10),
-          Center(child: Text('Blood Group: O+')),
-          SizedBox(height: 10),
-          Center(child: Text('Phone Number: +1234567890')),
-          SizedBox(height: 10),
-          Center(child: Text('Email: john.doe@example.com')),
-          SizedBox(height: 10),
-          Center(child: Text('City: Anytown')),
-          SizedBox(height: 10),
-          Center(child: Text('Hospital: XYZ Hospital')),
-          SizedBox(height: 10),
-          Center(child: Text('Location: Street, City')),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              // Add functionality for the call button
-            },
-            child: const Text('Call'),
+          Card(
+            child: Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          'https://t4.ftcdn.net/jpg/06/81/51/81/240_F_681518121_LN4LfnyObzdsL7RPG00BQOAvp7sdv1Al.jpg'),
+                      fit: BoxFit.fill),
+                ),
+                height: 200,
+              ),
+            ),
           ),
-          SizedBox(height: 10),
-          ElevatedButton(
+          SizedBox(
+            height: 20,
+          ),
+
+          ///Display user name
+          Center(child: Text('Name: $username')),
+          SizedBox(height: 15),
+
+          Center(child: Text('Age: $userage')), // Display user age
+          SizedBox(height: 15),
+
+          ///Display user bloodGroup
+          Center(child: Text('Blood Group: $userbloodGroup')),
+          SizedBox(height: 15),
+
+          ///Display user home address
+          Center(child: Text('City: $userhomeAddress')),
+          SizedBox(height: 15),
+          Center(child: Text('Hospital: $userhospitalAddress')),
+          SizedBox(height: 15),
+          Center(
+            child: Text('Location: $latitude, $longitude'),
+          ),
+          SizedBox(height: 15),
+          Center(child: Text('Phone Number: +92$userphoneNum')),
+          SizedBox(height: 15),
+          MaterialButton(
+            shape: StadiumBorder(),
+            color: Colors.red,
+            height: 50,
+            minWidth: 50,
             onPressed: () {
-              // Add functionality for the second button
+              const String countryCode = '+92';
+              FlutterPhoneDirectCaller.callNumber(
+                '$countryCode$userphoneNum',
+              );
             },
-            child: Text("Additional Action"),
+            child: const Text(
+              'Call',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),

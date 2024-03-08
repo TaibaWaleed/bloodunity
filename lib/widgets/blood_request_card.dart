@@ -3,23 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class BloodRequestCard extends StatelessWidget {
-  final String? userName;
-  final int? userphoneNum;
-  final String? userbloodGroup;
-  final String? userhomeAddress;
-  final String? userhospitalAddress;
-  final String? usertimeStamp;
-  final Function()? onTap;
+  // Existing parameters...
+  final String userName;
+  final int userphoneNum;
+  final String userbloodGroup;
+  final String userhospitalAddress;
+  final String userhomeAddress;
+  final String usertimeStamp;
+  final double latitude;
+  final double longitude;
+  final String phoneNumber;
+  final dynamic userAge; // Replace with actual data
+  final String userEmail; // Replace with actual data
   const BloodRequestCard({
-    Key? key, // Added Key parameter
-    this.userName,
-    this.userphoneNum,
-    this.userbloodGroup,
-    this.userhospitalAddress,
-    this.userhomeAddress,
-    this.usertimeStamp,
-    this.onTap,
-  }) : super(key: key);
+    required this.userName,
+    required this.userphoneNum,
+    required this.userbloodGroup,
+    required this.userhospitalAddress,
+    required this.userhomeAddress,
+    required this.usertimeStamp,
+    required this.latitude,
+    required this.longitude,
+    required this.phoneNumber,
+    required this.userAge,
+    required this.userEmail,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +35,11 @@ class BloodRequestCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: InkWell(
-          onTap: onTap,
+          onTap: () {},
           child: Card(
             elevation: 5.0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(20),
             ),
             color: Colors.white,
             child: Container(
@@ -43,7 +51,7 @@ class BloodRequestCard extends StatelessWidget {
                     child: ListTile(
                       leading: const Icon(Icons.person),
                       title: Text(userName ?? 'N/A'),
-                      subtitle: Text('+92${userphoneNum ?? 'N/A'}'),
+                      subtitle: Text('+92$userphoneNum' ?? 'N/A'),
                       trailing: Text(
                         userbloodGroup ?? 'N/A',
                         style: TextStyle(fontSize: 20),
@@ -57,13 +65,17 @@ class BloodRequestCard extends StatelessWidget {
                       trailing: Text(usertimeStamp ?? 'N/A'),
                     ),
                   ),
+
+                  ///call button
                   Row(
                     children: [
                       Expanded(
                         child: Container(
                           color: Colors.red,
                           child: TextButton.icon(
-                            style: const ButtonStyle(),
+                            style: ButtonStyle(
+                                // Add style properties if needed
+                                ),
                             icon: const Icon(
                               Icons.phone,
                               color: Colors.white,
@@ -71,7 +83,8 @@ class BloodRequestCard extends StatelessWidget {
                             onPressed: () {
                               const String countryCode = '+92';
                               FlutterPhoneDirectCaller.callNumber(
-                                  '$countryCode$userphoneNum');
+                                '$countryCode$userphoneNum',
+                              );
                             },
                             label: const Text(
                               'CALL',
@@ -90,15 +103,29 @@ class BloodRequestCard extends StatelessWidget {
                               color: Colors.white,
                             ),
                             onPressed: () {
-                              // Implement details screen navigation
-                              //navigate to donor Details Screen
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (_) {
-                                return DonorDetailScreen();
-                              }));
+                              // Navigate to donor Details Screen
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) {
+                                  return DonorDetailScreen(
+                                    // Pass the required parameters to the donor detail screen
+                                    username: userName,
+                                    userage: userAge,
+                                    useremail: userEmail,
+                                    userphoneNum: userphoneNum,
+                                    userbloodGroup: userbloodGroup,
+                                    userhospitalAddress: userhospitalAddress,
+                                    userhomeAddress: userhomeAddress,
+                                    usertimeStamp: usertimeStamp,
+                                    latitude: latitude,
+                                    longitude: longitude,
+                                    phoneNumber: phoneNumber, userramdonId: '',
+                                  );
+                                }),
+                              );
                             },
                             label: const Text(
-                              'See Details',
+                              'SEE DETAILS',
                               style: TextStyle(color: Colors.white),
                             ),
                           ),

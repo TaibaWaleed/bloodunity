@@ -11,6 +11,7 @@ class PrivacyScreen extends StatelessWidget {
           'Privacy Policy',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -21,8 +22,11 @@ class PrivacyScreen extends StatelessWidget {
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 15),
-            Text('Last updated: January 16, 2024'),
-            SizedBox(height: 16),
+            Text(
+              'Last updated: January 16, 2024',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 18),
             Text(
               'This Privacy Policy describes Our policies and procedures on the collection, use, and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.',
             ),
@@ -36,7 +40,6 @@ class PrivacyScreen extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
-            // Add more Text widgets for the content...
 
             // Example: Adding a heading
             Text(
@@ -73,7 +76,10 @@ class PrivacyScreen extends StatelessWidget {
             //  Example: Adding a heading
             Text(
               'Contact Us',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 15),
             Text(

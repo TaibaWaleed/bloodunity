@@ -41,7 +41,7 @@ class _LogInScreenState extends State<LogInScreen> {
               .get();
 
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
-            return const HomeScreen();
+            return HomeScreen();
           }));
         }
       } on FirebaseAuthException catch (e) {
@@ -75,7 +75,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           const Text(
-                            'WELCOME TO BLOOD UNITY ',
+                            'WELCOME TO \n BLOOD UNITY APP',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 20.0,
@@ -85,7 +85,8 @@ class _LogInScreenState extends State<LogInScreen> {
                           CircleAvatar(
                             radius: 100,
                             backgroundImage: NetworkImage(
-                                'https://media.istockphoto.com/id/182236982/photo/blood.jpg?s=612x612&w=0&k=20&c=xnO5tu_2LcCMpQalXDEVLorUQoXU0GAggG4qQ7lesNM='),
+                              'https://img.freepik.com/premium-vector/3d-blood-type-b-o-ab-red-symbol-icon-vector-isolated-white-background-3d-blood-donation-medical-healthcare-concept-cartoon-minimal-style-3d-icon-vector-render-illustration_726846-5858.jpg',
+                            ),
                           ),
                           CustomTextField(
                             textEditingController: _emailC,
@@ -130,13 +131,24 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                           _isLoading
                               ? const CircularProgressIndicator()
-                              : CustomButton(
-                                  title: 'LOGIN',
+                              : MaterialButton(
+                                  height: 50.0,
+                                  minWidth: 120.0,
+                                  color: Colors
+                                      .red, // Set your desired button color
                                   onPressed: _isLoading
                                       ? null
                                       : () {
                                           _loginCredentials();
                                         },
+                                  child: Text(
+                                    'LOGIN',
+                                    style: TextStyle(
+                                      color: Colors
+                                          .white, // Set your desired text color
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
                                 ),
                           Align(
                             alignment: Alignment.bottomRight,
@@ -156,7 +168,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             title: "Don't have an Account?",
                             buttonTitle: 'CREATE ACCOUNT',
                             onPressed: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (_) {
                                   return const SignUpScreen();

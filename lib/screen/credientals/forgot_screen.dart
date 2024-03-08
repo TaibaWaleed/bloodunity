@@ -38,60 +38,77 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text(
-                    'Forget Password',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  CircleAvatar(
-                    radius: 100,
-                    backgroundImage: NetworkImage(
-                        'https://scontent.flhe2-2.fna.fbcdn.net/v/t39.30808-6/419252893_372550232090493_1583071094400664806_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=3635dc&_nc_eui2=AeFsLXfnq0bEasv9s99ciOF_ch-KVVJZYh1yH4pVUlliHV6A0XtqPpRzpPcaqHd6xYSx_L7Aa7YmYcQfrtsms4Iq&_nc_ohc=o49Loh8wl1AAX8O4F6W&_nc_zt=23&_nc_ht=scontent.flhe2-2.fna&oh=00_AfBTppw1swg6xG9nXb7zBkmfmzA2pLzmUOkxoioa0lvOMA&oe=65ACC06A'),
-                  ),
-                  CustomTextField(
-                    textEditingController: emailController,
-                    prefixIcon: Icons.email_outlined,
-                    hintText: 'Enter Email',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
-                      }
-                      return null;
-                    },
-                  ),
-                  _isLoading
-                      ? const CircularProgressIndicator()
-                      : CustomButton(
-                          title: _isLoading
-                              ? 'sending request.....'
-                              : 'send request',
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              String email = emailController.text.trim();
-                              resetPassword(context, email);
-                            }
-                          },
-                        ),
-                ],
+        body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Text(
+                ///title
+                ' BLOOD UNITY \n Forget Password',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+
+              ///Circle Avatar
+              CircleAvatar(
+                radius: 100,
+                backgroundImage: NetworkImage(
+                  'https://img.freepik.com/premium-vector/3d-blood-type-b-o-ab-red-symbol-icon-vector-isolated-white-background-3d-blood-donation-medical-healthcare-concept-cartoon-minimal-style-3d-icon-vector-render-illustration_726846-5858.jpg',
+                ),
+              ),
+
+              ///custom text feild email
+              CustomTextField(
+                textEditingController: emailController,
+                prefixIcon: Icons.email_outlined,
+                hintText: 'Enter Email',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+              ),
+              _isLoading
+                  ? const CircularProgressIndicator()
+
+                  ///material forgot button
+                  : MaterialButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          String email = emailController.text.trim();
+                          resetPassword(context, email);
+                        }
+                      },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      height: 50, // Adjust the height as needed
+                      minWidth: 120, // Adjust the width as needed
+                      color: Colors.red,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          _isLoading ? 'Sending Request...' : 'Send Request',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+            ],
           ),
         ),
       ),
-    );
+    ));
   }
 }

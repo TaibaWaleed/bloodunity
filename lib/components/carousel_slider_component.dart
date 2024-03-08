@@ -3,7 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 ///CarouselSlider
-carouselSliderComponent() {
+carouselSliderMethod() {
   return CarouselSlider(
     items: carouselSliderModel.map((carouselModelValue) {
       return Card(
@@ -14,19 +14,13 @@ carouselSliderComponent() {
                 Expanded(
                     child: Image.network(carouselModelValue.imageUrl.toString(),
                         fit: BoxFit.fitHeight)),
-                Expanded(
-                  child: Text(
-                    carouselModelValue.tips.toString(),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
               ],
             )),
       );
     }).toList(),
     options: CarouselOptions(
       autoPlay: true,
-      aspectRatio: 16 / 10,
+      aspectRatio: 12 / 9,
       initialPage: 0,
     ),
   );

@@ -1,4 +1,4 @@
-import 'package:bloodunity/screen/home/home_screen.dart';
+import 'package:bloodunity/user_screen/user_activity_cycle_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       ///title
-      title: 'Blood Unity ',
+      title: 'Blood Unity',
 
       ///debugShowCheckedModeBanner
       debugShowCheckedModeBanner: false,
@@ -30,9 +30,6 @@ class MyApp extends StatelessWidget {
 
         ///primaryColor
         primaryColor: Colors.red,
-
-        ///fontFamily
-        fontFamily: 'roboto',
 
         ///app bar theme
         appBarTheme: const AppBarTheme(
@@ -49,7 +46,7 @@ class MyApp extends StatelessWidget {
       ),
 
       ///home initial screen
-      home: const HomeScreen(),
+      home: const UserActivityCycleScreen(),
     );
   }
 }

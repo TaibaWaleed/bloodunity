@@ -1,20 +1,15 @@
 class BloodRequestModel {
-  String uid;
-  String displayName;
-  String age;
-  String bloodGroup;
-  String city;
-  String hospital;
-  String location;
-  String phoneNumber;
-  String message;
-  String latitude;
-  String longitude;
-
-  ///latitude
-  ///longitude
-  ///then save make it in add request file
-  ///then save to database
+  String? uid;
+  String? displayName;
+  String? age;
+  String? bloodGroup;
+  String? city;
+  String? hospital;
+  String? location;
+  String? phoneNumber;
+  String? message;
+  String? latitude;
+  String? longitude;
 
   BloodRequestModel({
     required this.uid,
@@ -33,17 +28,17 @@ class BloodRequestModel {
   // Factory method to create an instance from a map
   factory BloodRequestModel.fromMap(Map<String, dynamic> map) {
     return BloodRequestModel(
-      uid: map['uid'],
-      displayName: map['displayName'] ?? 'SHAHEENER',
-      age: map['age'],
-      bloodGroup: map['bloodGroup'],
-      city: map['city'],
-      hospital: map['hospital'],
-      location: map['location'],
-      phoneNumber: map['phoneNumber'],
-      message: map['message'],
-      latitude: map['latitude'],
-      longitude: map['longitude'],
+      uid: map['uid'] ?? '',
+      displayName: map['displayName'] ?? '',
+      age: map['age'] ?? '',
+      bloodGroup: map['bloodGroup'] ?? '',
+      city: map['city'] ?? '',
+      hospital: map['hospital'] ?? '',
+      location: map['location'] ?? '',
+      phoneNumber: map['phoneNumber'] ?? '',
+      message: map['message'] ?? '',
+      latitude: map['latitude'] ?? '',
+      longitude: map['longitude'] ?? '',
     );
   }
 

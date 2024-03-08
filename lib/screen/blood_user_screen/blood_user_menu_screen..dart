@@ -1,12 +1,9 @@
 import 'package:bloodunity/screen/blood_user_screen/blood_rate_app_screen.dart';
-import 'package:bloodunity/screen/blood_user_screen/blood_request_screen.dart';
 import 'package:bloodunity/screen/blood_user_screen/blood_share_app.dart';
-import 'package:bloodunity/screen/blood_user_screen/donor_detail_screen.dart';
 import 'package:bloodunity/screen/credientals/login_screen.dart';
-import 'package:bloodunity/screen/crud/update_blood_screen.dart';
 import 'package:bloodunity/screen/privacy_screen/privacy_screen.dart';
+import 'package:bloodunity/screen/profile/blood_group_tips/blood_group_tips.dart';
 import 'package:bloodunity/screen/profile/profile_screen.dart';
-import 'package:bloodunity/screen/review_screen/review_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -25,27 +22,31 @@ class _BloodUserMenuScreenState extends State<BloodUserMenuScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 5,
+              height: 2,
             ),
-            ListTile(
-              title: Text(
-                'Requests',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            Card(
+              child: Padding(
+                padding: EdgeInsets.all(7.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            'https://t4.ftcdn.net/jpg/06/81/51/81/240_F_681518121_LN4LfnyObzdsL7RPG00BQOAvp7sdv1Al.jpg'),
+                        fit: BoxFit.fill),
+                  ),
+                  height: 200,
+                ),
               ),
             ),
-            _listTile(context, () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) {
-                return const RequestScreen();
-              }));
-            }, Icons.image, 'Manage Requests'),
-            SizedBox(height: 10),
+
             ListTile(
               title: Text(
                 'General',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(height: 10),
+
+            ///blood profile
             _listTile(
               context,
               () {
@@ -56,31 +57,19 @@ class _BloodUserMenuScreenState extends State<BloodUserMenuScreen> {
               Icons.person_outline,
               'Profile',
             ),
+
+            ///
             _listTile(
               context,
               () {
                 Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return const UpdateBloodScreen();
+                  return const BloodTipScreen();
                 }));
               },
-              Icons.update,
-              'Update Blood',
+              Icons.tips_and_updates_outlined,
+              'Blood Tips',
             ),
-            _listTile(
-              context,
-              () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return const ReviewScreen();
-                }));
-              },
-              Icons.feedback,
-              'Review/Feedback',
-            ),
-            _listTile(context, () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) {
-                return const DonorDetailScreen();
-              }));
-            }, Icons.details, 'Blood Detail'),
+
             _listTile(context, () {
               Navigator.push(context, MaterialPageRoute(builder: (_) {
                 return const PrivacyScreen();
@@ -90,12 +79,13 @@ class _BloodUserMenuScreenState extends State<BloodUserMenuScreen> {
               Navigator.push(context, MaterialPageRoute(builder: (_) {
                 return RateAppScreen();
               }));
-            }, Icons.rate_review, 'Rate'),
+            }, Icons.rate_review, 'Rate App'),
             _listTile(context, () {
               Navigator.push(context, MaterialPageRoute(builder: (_) {
                 return const ShareApp();
               }));
-            }, Icons.share, 'ShareApp'),
+            }, Icons.share, 'Share App'),
+
             _listTile(context, () async {
               await FirebaseAuth.instance.signOut();
               Navigator.pushAndRemoveUntil(context,

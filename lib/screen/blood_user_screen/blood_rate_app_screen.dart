@@ -14,6 +14,7 @@ class RateAppScreen extends StatelessWidget {
           'Rate App',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -21,6 +22,12 @@ class RateAppScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            CircleAvatar(
+              radius: 100,
+              backgroundImage: NetworkImage(
+                'https://img.freepik.com/premium-vector/3d-blood-type-b-o-ab-red-symbol-icon-vector-isolated-white-background-3d-blood-donation-medical-healthcare-concept-cartoon-minimal-style-3d-icon-vector-render-illustration_726846-5858.jpg',
+              ),
+            ),
             Text(
               'How would you rate the Blood App?',
               style: TextStyle(fontSize: 20),
